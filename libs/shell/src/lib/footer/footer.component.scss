@@ -1,0 +1,84 @@
+.footer {
+  overflow: hidden;
+  padding-bottom: var(--obms-section-padding);
+  padding-top: var(--obms-section-padding);
+  position: relative;
+
+  &::after {
+    background: url('pattern.svg'),
+      linear-gradient(
+        180deg,
+        rgba(255 255 255 / 100%) 0%,
+        rgba(255 255 255 / 0%) 100%
+      );
+    background-blend-mode: overlay;
+    content: '';
+    display: block;
+    height: 400px;
+    mix-blend-mode: color-burn;
+    opacity: 0.5;
+    position: absolute;
+    bottom: -56px;
+    width: 100%;
+    z-index: 1;
+  }
+
+  > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__promise {
+    font-size: 1.25rem;
+  }
+
+  &__logo {
+    width: 4rem;
+  }
+
+  &__headline {
+    font-weight: normal;
+  }
+
+  &__ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0 0 3rem 0 !important;
+    padding: 0 !important;
+  }
+
+  &__contactoption {
+    align-items: center;
+    display: flex;
+    gap: 1.25rem;
+    text-decoration: none !important;
+    transition-duration: 0.5s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__item {
+    align-items: center;
+    background-color: var(--secondary);
+    border-radius: 0.25rem;
+    color: var(--white);
+    display: inline-flex;
+    font-size: 1.25rem;
+    height: 2.5rem;
+    justify-content: center;
+    width: 2.5rem;
+  }
+
+  &__cta {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__sections {
+    row-gap: 1.5rem;
+  }
+}

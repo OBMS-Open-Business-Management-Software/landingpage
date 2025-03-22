@@ -1,0 +1,104 @@
+.content {
+  overflow: hidden;
+  padding-bottom: var(--obms-section-padding);
+  padding-top: var(--obms-section-padding);
+  position: relative;
+
+  &::after {
+    background: url('../../../../../assets/images/pattern.svg'),
+      linear-gradient(
+        180deg,
+        rgba(255 255 255 / 100%) 0%,
+        rgba(255 255 255 / 0%) 100%
+      );
+    background-blend-mode: overlay;
+    content: '';
+    display: block;
+    height: 400px;
+    mix-blend-mode: color-burn;
+    opacity: 0.5;
+    position: absolute;
+    bottom: -56px;
+    width: 100%;
+    z-index: 1;
+  }
+
+  > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__headline {
+    font-size: 2.25rem;
+  }
+
+  &__subheadline {
+    font-size: 1.125rem;
+  }
+
+  &__list {
+    row-gap: 1.5rem;
+  }
+
+  &__item {
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.075) 0px 0.125rem 0.25rem;
+
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  &__iconize {
+    align-items: center;
+    background-color: var(--secondary);
+    border-radius: 0.25rem;
+    display: block;
+    height: 3.25rem;
+    justify-content: center;
+    padding: 0.625rem;
+    width: 3.25rem;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__container {
+    position: relative;
+
+    &::before {
+      background-image: url('../../../../../assets/images/arrow-5.svg');
+      background-size: contain;
+      background-position: center;
+      top: 0;
+      content: '';
+      display: block;
+      height: 4rem;
+      position: absolute;
+      left: 0;
+      transform: translate(-100%, -100%) rotate(90deg);
+      width: 4rem;
+      z-index: 5;
+    }
+
+    &::after {
+      background-image: url('../../../../../assets/images/arrow-6.svg');
+      background-size: contain;
+      background-position: center;
+      bottom: 0;
+      content: '';
+      display: block;
+      height: 4rem;
+      position: absolute;
+      right: 0;
+      transform: translate(110%, 60%) rotate(215deg);
+      width: 4rem;
+      z-index: 5;
+    }
+  }
+}

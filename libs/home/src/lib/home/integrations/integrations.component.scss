@@ -1,0 +1,67 @@
+.integrations {
+  overflow: hidden;
+  padding-bottom: calc(var(--obms-section-padding) / 2);
+  padding-top: var(--obms-section-padding);
+  position: relative;
+
+  &__headline {
+    font-size: 2.25rem;
+  }
+
+  &__subheadline {
+    font-size: 1.125rem;
+  }
+
+  &__list {
+    row-gap: 1.5rem;
+  }
+
+  &__item {
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.075) 0px 0.125rem 0.25rem;
+    transition-duration: 0.5s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    i {
+      align-items: center;
+      background-color: var(--secondary);
+      border-radius: 0.25rem;
+      color: var(--white);
+      display: inline-flex;
+      font-size: 2rem;
+      height: 3.25rem;
+      justify-content: center;
+      width: 3.25rem;
+    }
+
+    h3 {
+      font-size: 1.125rem;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  &__container {
+    position: relative;
+
+    &::before {
+      background-image: url('../../../../../assets/images/arrow-5.svg');
+      background-size: contain;
+      background-position: center;
+      top: 0;
+      content: '';
+      display: block;
+      height: 4rem;
+      position: absolute;
+      left: 0;
+      transform: translate(-100%, -100%) rotate(90deg);
+      width: 4rem;
+      z-index: 5;
+    }
+  }
+}

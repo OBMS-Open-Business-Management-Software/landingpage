@@ -1,0 +1,118 @@
+.why {
+  overflow: hidden;
+  padding-bottom: var(--obms-section-padding);
+  padding-top: var(--obms-section-padding);
+  position: relative;
+
+  .col-md-5,
+  .col-md-10 {
+    position: relative;
+    z-index: 3;
+  }
+
+  &__headline {
+    font-size: 2.25rem;
+  }
+
+  &__subheadline {
+    font-size: 1.125rem;
+  }
+
+  &__list {
+    row-gap: 1.5rem;
+  }
+
+  &__item {
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.075) 0px 0.125rem 0.25rem;
+    transition-duration: 0.5s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    h3 {
+      font-size: 1.125rem;
+    }
+  }
+
+  &__ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0.25rem;
+    display: flex;
+    flex-direction: column;
+
+    li {
+      align-items: center;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+
+      i {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .good {
+    &::after {
+      background: url('good.png');
+      background-size: contain;
+      background-position: right;
+      background-repeat: no-repeat;
+      content: '';
+      height: 85%;
+      position: absolute;
+      bottom: 0;
+      right: -7.5rem;
+      width: 100%;
+      z-index: 2;
+
+      @media (max-width: 1799px) {
+        display: none;
+      }
+    }
+  }
+
+  .bad {
+    &::after {
+      background: url('bad.png');
+      background-size: contain;
+      background-position: left;
+      background-repeat: no-repeat;
+      content: '';
+      height: 85%;
+      position: absolute;
+      bottom: 0;
+      left: -7.5rem;
+      width: 100%;
+      z-index: 2;
+
+      @media (max-width: 1799px) {
+        display: none;
+      }
+    }
+  }
+
+  &::after {
+    background: url('../../../../../assets/images/pattern.svg'),
+      linear-gradient(
+        180deg,
+        rgba(255 255 255 / 100%) 0%,
+        rgba(255 255 255 / 0%) 100%
+      );
+    background-blend-mode: overlay;
+    content: '';
+    display: block;
+    height: 400px;
+    mix-blend-mode: color-burn;
+    opacity: 0.5;
+    position: absolute;
+    bottom: -56px;
+    width: 100%;
+    z-index: 1;
+  }
+}

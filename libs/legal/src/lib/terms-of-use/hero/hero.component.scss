@@ -1,0 +1,89 @@
+.hero {
+  overflow: hidden;
+  padding-bottom: calc(var(--obms-section-padding) / 2);
+  padding-top: var(--obms-section-padding);
+  position: relative;
+
+  &::before {
+    background: url('../../../../../assets/images/pattern.svg'),
+      linear-gradient(
+        0deg,
+        rgba(255 255 255 / 100%) 0%,
+        rgba(255 255 255 / 0%) 100%
+      );
+    background-blend-mode: overlay;
+    content: '';
+    display: block;
+    height: 400px;
+    mix-blend-mode: color-burn;
+    opacity: 0.5;
+    position: absolute;
+    top: -56px;
+    width: 100%;
+    z-index: 1;
+  }
+
+  > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__headline {
+    font-size: 3.5rem;
+
+    @media (max-width: 991px) {
+      font-size: 2.75rem;
+    }
+  }
+
+  &__subheadline {
+    font-size: 1.25rem;
+  }
+
+  &__focus {
+    font-weight: bold;
+  }
+
+  &__advantages {
+    align-items: flex-start;
+    bottom: -1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    left: 0;
+    position: absolute;
+  }
+
+  &__advantage {
+    align-self: flex-start;
+    background-color: var(--white);
+    overflow: hidden;
+    padding-left: calc(1.5rem + 42px) !important;
+    position: relative;
+    transition-duration: 0.5s;
+    white-space: nowrap;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    i {
+      align-items: center;
+      aspect-ratio: 1 / 1;
+      background-color: var(--success);
+      color: var(--white);
+      display: flex;
+      font-size: 1.25rem;
+      height: 100%;
+      justify-content: center;
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  &__cta {
+    display: flex;
+    gap: 0.5rem;
+  }
+}

@@ -1,0 +1,119 @@
+.pricing {
+  background-color: var(--primary);
+  overflow: hidden;
+  padding-bottom: var(--obms-section-padding);
+  padding-top: var(--obms-section-padding);
+  position: relative;
+
+  &::after {
+    background: url('../../../../../assets/images/pattern.svg'),
+      linear-gradient(0deg, rgba(0 0 0 / 100%) 0%, rgba(0 0 0 / 0%) 100%);
+    background-blend-mode: overlay;
+    content: '';
+    display: block;
+    height: 400px;
+    mix-blend-mode: color-dodge;
+    opacity: 0.4;
+    position: absolute;
+    top: -56px;
+    width: 100%;
+    z-index: 1;
+  }
+
+  > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__headline {
+    font-size: 2.25rem;
+  }
+
+  &__subheadline {
+    font-size: 1.125rem;
+  }
+
+  &__list {
+    row-gap: 1.5rem;
+  }
+
+  &__item {
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.075) 0px 0.125rem 0.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: space-between;
+    transition-duration: 0.5s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    h3 {
+      font-size: 1.125rem;
+    }
+
+    p {
+      background-color: var(--gray);
+      margin-bottom: 0;
+    }
+  }
+
+  &__ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      align-items: center;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+
+      i {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  &__price {
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+
+  &__subline {
+    line-height: 1;
+  }
+
+  &__box {
+    background-color: var(--gray);
+  }
+
+  &__container {
+    position: relative;
+
+    &::before {
+      background-image: url('../../../../../assets/images/arrow-7.svg');
+      background-size: contain;
+      background-position: center;
+      top: 0;
+      content: '';
+      display: block;
+      height: 4rem;
+      position: absolute;
+      left: 0;
+      transform: translate(-100%, -100%);
+      width: 4rem;
+      z-index: 5;
+    }
+  }
+
+  &__soon {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,109 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+
+  &--nomobile {
+    @media (max-width: 991px) {
+      display: none;
+    }
+  }
+
+  &__infos {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  i {
+    font-size: 1.25rem;
+  }
+
+  .navbar-dark .navbar-nav .nav-link {
+    color: var(--white) !important;
+  }
+
+  img {
+    height: 2rem;
+  }
+
+  .collapse {
+    gap: 1.5rem;
+  }
+
+  .navbar-nav {
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .navbar-toggler {
+    border: none;
+  }
+
+  .navbar {
+    backdrop-filter: saturate(180%) blur(20px);
+    height: 5rem;
+    transition-duration: 0.5s;
+
+    .navbar-collapse {
+      transition-duration: 0s;
+
+      @media (max-width: 991px) {
+        position: fixed;
+        height: calc(100vh - 5rem) !important;
+        width: 100%;
+        left: 0;
+        top: 5rem;
+        background-color: var(--gray);
+        overflow: hidden;
+        padding: calc(var(--obms-section-padding) / 2) 0;
+
+        > * {
+          position: relative;
+          z-index: 2;
+        }
+
+        &::before {
+          background: url('../footer/pattern.svg'),
+            linear-gradient(
+              0deg,
+              rgba(255 255 255 / 100%) 0%,
+              rgba(255 255 255 / 0%) 100%
+            );
+          background-blend-mode: overlay;
+          content: '';
+          display: block;
+          height: 400px;
+          mix-blend-mode: color-burn;
+          opacity: 0.5;
+          position: absolute;
+          top: -56px;
+          width: 100%;
+          z-index: 1;
+        }
+
+        .nav-link {
+          color: #3c4858 !important;
+        }
+
+        .navbar-nav {
+          gap: 0;
+        }
+      }
+    }
+  }
+
+  &.header--scrolled {
+    .navbar {
+      background-color: color-mix(
+        in srgb,
+        var(--secondary) 85%,
+        transparent
+      ) !important;
+    }
+  }
+}

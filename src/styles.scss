@@ -1,0 +1,86 @@
+$primary: #040e29;
+$secondary: #ff6b00;
+$success: #0f7038;
+$warning: #ffb800;
+$danger: #b21e35;
+$info: #1464f6;
+$dark: $secondary;
+$white: #ffffff;
+$text-muted: #3c4858;
+$body-color: #3c4858;
+$gray: #f3f9fc;
+$blue: #3490dc;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #e3342f;
+$orange: #f6993f;
+$yellow: #ffed4a;
+$green: #38c172;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+$border-radius: 0.2rem;
+$modal-content-border-radius: 0.2rem;
+$modal-content-border-width: 0;
+$input-disabled-bg: $gray;
+$body-bg: #f8fafc;
+$font-family-sans-serif: 'Space Grotesk Variable', sans-serif;
+$font-size-base: 1rem;
+$line-height-base: 1.6;
+$border-radius: 0.25rem;
+$container-max-widths: (
+  sm: 600px,
+  md: 800px,
+  lg: 1000px,
+  xl: 1300px,
+);
+
+@import '@fontsource-variable/space-grotesk';
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+
+body {
+  --body-bg: #{$body-bg};
+  --primary: #{$primary};
+  --secondary: #{$secondary};
+  --success: #{$success};
+  --warning: #{$warning};
+  --danger: #{$danger};
+  --gray: #{$gray};
+  --white: #{$white};
+  --input-disabled-bg: var(#{$input-disabled-bg}, var(--gray));
+  --modal-content-border-radius: #{$modal-content-border-radius};
+  --obms-section-padding: 6rem;
+
+  @media (max-width: 767px) {
+    --obms-section-padding: 3rem;
+  }
+
+  padding-top: 5rem;
+}
+
+::-webkit-scrollbar {
+  width: 0.625rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
+
+.container,
+.container-fluid,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
