@@ -25,7 +25,7 @@ jobs:
     needs: build
     permissions:
       id-token: write
-      contents: read
+      contents: write
     if: ${{contains(needs.build.outputs.affected_apps, 'landingpage#')}}
     steps:
       - uses: actions/checkout@v4
