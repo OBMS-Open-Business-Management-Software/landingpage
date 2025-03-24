@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
   }
 
   setFavicon(href: string) {
-    let link: HTMLLinkElement =
+    const link: HTMLLinkElement =
       document.querySelector("link[rel~='icon']") ||
       this.renderer.createElement('link');
     this.renderer.setAttribute(link, 'rel', 'icon');
