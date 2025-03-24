@@ -42,4 +42,4 @@ jobs:
           path: dist
       - name: Upload bundle
         if: ${{ hashFiles('dist/landingpage/browser/') }}
-        run: npx angular-cli-ghpages --dir=dist/landingpage/browser --cname=obms.one
+        run: npx angular-cli-ghpages --dir=dist/landingpage/browser --cname=obms.one --repo=https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/OBMS-Open-Business-Management-Software/landingpage.git
