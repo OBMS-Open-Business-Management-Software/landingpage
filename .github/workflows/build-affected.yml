@@ -1,0 +1,60 @@
+name: Build affected
+
+on:
+  workflow_call:
+    inputs:
+      configuration:
+        required: true
+        type: string
+      retention-days:
+        required: true
+        type: number
+    outputs:
+      affected_apps:
+        description: 'List of affected apps delimited by #'
+        value: ${{ jobs.build.outputs.affected_apps }}
+      base:
+        description: 'Base commit sha for nx usage'
+        value: ${{ jobs.build.outputs.base }}
+      head:
+        description: 'Head commit sha for nx usage'
+        value: ${{ jobs.build.outputs.head }}
+permissions:
+  contents: read
+  actions: read
+  packages: read
+
+jobs:
+  build:
+    name: Build affected ${{ inputs.configuration }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      affected_apps: ${{ steps.affectedAppsOutput.outputs.AFFECTED_APPS }}
+      base: ${{ steps.setSHAs.outputs.base }}
+      head: ${{ steps.setSHAs.outputs.head }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+      - uses: nrwl/nx-set-shas@v4
+        id: setSHAs
+      - run: npm ci
+      - run: echo "AFFECTED_APPS=\"$(npx nx show projects --affected --with-target build | tr '\n' '#')\""
+      - name: Output affected Apps
+        id: affectedAppsOutput
+        run: echo "AFFECTED_APPS=\"$(npx nx show projects --affected --with-target build | tr '\n' '#')\"" >> "$GITHUB_OUTPUT"
+      - name: Build Apps
+        run: npx nx affected -t build --parallel=2 --configuration=production
+      - name: Archive build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: ${{ inputs.retention-days }}

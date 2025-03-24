@@ -1,0 +1,43 @@
+name: Pull Request Checks
+
+on:
+  pull_request: {}
+
+permissions:
+  contents: read
+  actions: read
+  packages: read
+
+jobs:
+  check:
+    name: Pull Request Checks
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+      - uses: nrwl/nx-set-shas@v4
+      - run: npm ci
+      - run: npx nx format:check
+      - run: npx nx affected -t lint --parallel=3
+      - run: npx nx affected -t stylelint --parallel=3
+      - run: npx nx affected -t test --runInBand
+      - run: npx nx affected -t e2e
+
+  build:
+    name: Build Production
+    uses: ./.github/workflows/build-affected.yml
+    permissions:
+      contents: read
+      actions: read
+      packages: read
+    with:
+      configuration: production
+      retention-days: 1

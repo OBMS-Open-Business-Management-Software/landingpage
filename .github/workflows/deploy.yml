@@ -1,0 +1,45 @@
+name: Landingpage - Production
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  actions: read
+  packages: read
+
+jobs:
+  build:
+    name: Build affected
+    uses: ./.github/workflows/build-affected.yml
+    with:
+      configuration: production
+      retention-days: 10
+
+  deploy-app-bundle:
+    name: Deploy app bundle to GitHub pages
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      id-token: write
+      contents: read
+    if: ${{contains(needs.build.outputs.affected_apps, 'landingpage#')}}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+      - name: Download production build
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+      - name: Upload bundle
+        if: ${{ hashFiles('dist/landingpage/browser/') }}
+        run: npx angular-cli-ghpages --dir=dist/landingpage/browser --cname=obms.one
